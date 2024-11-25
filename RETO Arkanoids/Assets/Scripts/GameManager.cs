@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-
     private bool isGameStarted = false;
 
     [SerializeField]
@@ -23,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     GameObject startMenu, player, ball;
+
+    public static GameManager instance;
 
     private void Awake()
     {
@@ -52,19 +52,19 @@ public class GameManager : MonoBehaviour
         {
             startingTimer = startingTimer + Time.deltaTime;
             timer.text = startingTimer.ToString("00:00");
-            Debug.Log("Game Started");
         }
     }
 
-    public void GameStart()
+    public void StartIsClicked()
     {
         isGameStarted = true;
-        startMenu.SetActive(false);
-        player.SetActive(true);
-        ball.SetActive(true);
 
-        timer.text = "00:05";
+        timer.text = "00:00";
         score.text = "00000";
         lifes.text = "3";
+
+        player.SetActive(true);
+        ball.SetActive(true);
+        LeanTween.moveY(startMenu.GetComponent<RectTransform>(), 430f, 0.5f).setEase(LeanTweenType.easeInOutSine);
     }
 }

@@ -4,45 +4,38 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private Camera mainCamera;
+    public Rigidbody playerRb;
 
     [SerializeField]
-    private float playerOriginalYPosition;
+    private float speed = 30f;
 
-    [SerializeField]
-    private float mouseXPosition = 0f;
-
-    [SerializeField]
-    private float leftLimit = -2.25f;
-
-    [SerializeField]
-    private float rightLimit = 2.25f;
-
-    private float mouseLimitPosition;
+    private Vector3 playerOriginalPosition;
+    private float mouseXPosition;
 
     // Start is called before the first frame update
     private void Start()
     {
-        mainCamera = Camera.main;
-        playerOriginalYPosition = this.transform.position.y;
+
     }
 
     // Update is called once per frame
     private void Update()
     {
-        PlatformMovement();
-    }
+        mouseXPosition = Input.GetAxis("Mouse X");
 
-    private void PlatformMovement()
-    {
-        //Posición en X del movimiento del ratón
-        mouseXPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0f, 0f)).x;
+        if (mouseXPosition > 0)
+        {
+            playerOriginalPosition = Vector3.right;
+        }
+        else if (mouseXPosition < 0)
+        {
+            playerOriginalPosition = Vector3.left;
+        }
+        else
+        {
+            playerOriginalPosition = Vector3.zero;
+        }
 
-        //Ponemos límites al movimiento
-        mouseLimitPosition = Mathf.Clamp(mouseXPosition, leftLimit, rightLimit);
-
-        //La nueva posición del jugador
-        this.transform.position = new Vector3(mouseLimitPosition, playerOriginalYPosition, 0f);
+        playerRb.AddForce(playerOriginalPosition * speed * Time.deltaTime * 100);
     }
 }
