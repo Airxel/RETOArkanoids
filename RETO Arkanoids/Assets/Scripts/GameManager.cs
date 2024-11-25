@@ -1,48 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    public int level = 1;
+    public static GameManager instance;
+
+    private bool isGameStarted = false;
 
     [SerializeField]
-    public int lives = 3;
+    TextMeshProUGUI timer;
 
     [SerializeField]
-    public int score = 0;
+    TextMeshProUGUI score;
+
+    [SerializeField]
+    TextMeshProUGUI lifes;
+
+    private float startingTimer = 0f;
+
+    [SerializeField]
+    GameObject startMenu, player, ball;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        player.SetActive(false);
+        ball.SetActive(false);
+
+        if (GameManager.instance == null)
+        {
+            GameManager.instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     // Start is called before the first frame update
-    private void Start()
-    {
-        NewGame();
-    }
-
-    // Update is called once per frame
-    private void Update()
+    void Start()
     {
         
     }
 
-    private void NewGame()
+    // Update is called once per frame
+    void Update()
     {
-        this.lives = 3;
-        this.score = 0;
-
-        LoadLevel(1);
+        if (isGameStarted == true)
+        {
+            startingTimer = startingTimer + Time.deltaTime;
+            timer.text = startingTimer.ToString("00:00");
+            Debug.Log("Game Started");
+        }
     }
 
-    private void LoadLevel(int level)
+    public void GameStart()
     {
-        this.level = level;
+        isGameStarted = true;
+        startMenu.SetActive(false);
+        player.SetActive(true);
+        ball.SetActive(true);
 
-        SceneManager.LoadScene("Level " + level);
+        timer.text = "00:05";
+        score.text = "00000";
+        lifes.text = "3";
     }
 }
