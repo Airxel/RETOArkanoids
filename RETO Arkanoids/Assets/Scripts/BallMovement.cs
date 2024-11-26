@@ -4,43 +4,39 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
+    public Rigidbody ballRb;
 
     [SerializeField]
-    GameObject ball;
+    private float speed = 100f;
 
-    GameObject initialBall;
+    private Vector3 ballVelocity;
 
-    public static BallMovement instance;
-
-    Vector3 startingBallPosition;
-
-    private void Awake()
-    {
-        if (BallMovement.instance == null)
-        {
-            BallMovement.instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
+    [SerializeField]
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        BallInitialPosition();
+        this.transform.parent = player.transform;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        SpacePressed();
     }
 
-    private void BallInitialPosition()
+    private void SpacePressed()
     {
-        //startingBallPosition = new Vector3(PlayerMovement.instance.gameObject.transform.position.x, PlayerMovement.instance.gameObject.transform.position.y + 5f, 0f);
-        //initialBall = Instantiate(ball, startingBallPosition, Quaternion.identity);
+        if (Input.GetButton("Jump"))
+        {
+            this.transform.parent = null;
+
+            ballVelocity = new Vector3(Random.Range(-1f, 1f), 1f, 0f);
+            this.transform.position += ballVelocity * speed * Time.deltaTime;
+
+            //ballRb.AddForce(ballVelocity.normalized * speed * Time.deltaTime * 100);
+        }
     }
 }

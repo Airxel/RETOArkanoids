@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
         {
             startingTimer = startingTimer + Time.deltaTime;
             timer.text = startingTimer.ToString("00:00");
+
+            //ball.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.27f, 0f);
         }
     }
 
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour
 
         player.SetActive(true);
         ball.SetActive(true);
+
         LeanTween.moveY(startMenu.GetComponent<RectTransform>(), 430f, 0.5f).setEase(LeanTweenType.easeInOutSine);
     }
 }

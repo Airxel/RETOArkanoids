@@ -1329,7 +1329,7 @@ Transform:
   m_GameObject: {fileID: 545022482}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.5, z: 0}
+  m_LocalPosition: {x: 0, y: -3.48, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1345,7 +1345,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1357,10 +1357,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!114 &545022488
 MonoBehaviour:
@@ -1374,7 +1374,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ad370c80eb94544b219b1125ed210b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 0}
+  ballRb: {fileID: 545022487}
+  speed: 5
+  player: {fileID: 1231581942}
 --- !u!1 &597289867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,7 +2861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRb: {fileID: 1231581948}
-  speed: 30
+  speed: 75
 --- !u!54 &1231581948
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2868,8 +2870,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231581942}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 5
+  m_Mass: 0.5
+  m_Drag: 10
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -2883,10 +2885,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 124
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!1 &1436171075
 GameObject:
   m_ObjectHideFlags: 0
