@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Left Wall
+  - Right Wall
+  - Top Wall
+  - Bottom Wall
+  - Brick
   layers:
   - Default
   - TransparentFX

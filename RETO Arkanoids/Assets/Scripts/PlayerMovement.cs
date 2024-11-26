@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 30f;
 
     private Vector3 playerInitialPosition;
+
     private float mouseXPosition;
 
 
@@ -22,11 +24,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        transform.position = transform.position + new Vector3(Input.GetAxis("Mouse X") * Time.deltaTime * speed, 0f, 0f);
-    }
+        //transform.position = transform.position + new Vector3(Input.GetAxis("Mouse X") * Time.deltaTime * speed, 0f, 0f);
 
-    private void Wait()
-    {
         mouseXPosition = Input.GetAxis("Mouse X");
 
         if (mouseXPosition > 0)

@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private bool isGameStarted = false;
+
+    private bool isStartClicked = false;
 
     [SerializeField]
     TextMeshProUGUI timer;
@@ -26,9 +27,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        player.SetActive(false);
-        ball.SetActive(false);
-
         if (GameManager.instance == null)
         {
             GameManager.instance = this;
@@ -42,24 +40,23 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player.SetActive(false);
+        ball.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isGameStarted == true)
+        if (isStartClicked == true)
         {
             startingTimer = startingTimer + Time.deltaTime;
             timer.text = startingTimer.ToString("00:00");
-
-            //ball.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.27f, 0f);
         }
     }
 
     public void StartIsClicked()
     {
-        isGameStarted = true;
+        isStartClicked = true;
 
         timer.text = "00:00";
         score.text = "00000";
@@ -69,5 +66,10 @@ public class GameManager : MonoBehaviour
         ball.SetActive(true);
 
         LeanTween.moveY(startMenu.GetComponent<RectTransform>(), 430f, 0.5f).setEase(LeanTweenType.easeInOutSine);
+    }
+
+    public void QuitIsClicked()
+    {
+        Application.Quit();
     }
 }
