@@ -29,12 +29,15 @@ public class BallMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isGameStarted == false)
         {
             this.transform.parent = player.transform;
+
             this.transform.localPosition = new Vector3(0f, 1.5f, 0f);
+
+            ballVelocity = Vector3.zero;
 
             if (Input.GetButton("Jump"))
             {
@@ -45,7 +48,10 @@ public class BallMovement : MonoBehaviour
         }
         else
         {
-            this.transform.position = this.transform.position + ballVelocity.normalized * speed * Time.deltaTime;
+            ballRb.velocity = ballVelocity.normalized * speed;
+
+            //this.transform.position += ballVelocity.normalized * speed * Time.deltaTime;
+            //ballRb.AddForce(ballVelocity.normalized * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
         }
     }
 
@@ -57,41 +63,40 @@ public class BallMovement : MonoBehaviour
 
         ballVelocity = new Vector3(Random.Range(-1f, 1f), 1f, 0f);
 
+        ballVelocity.Normalize();
+
+        ballRb.velocity = ballRb.velocity * speed;
+
+        //ballRb.AddForce(ballVelocity.normalized * speed);
         //this.transform.position = this.transform.position + ballVelocity.normalized * speed;
-
-        ballRb.AddForce(ballVelocity.normalized * speed);
-
     }
 
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //ballVelocity = new Vector3(Random.Range(-1f, 1f), -1f, 0f);
-            ballVelocity = new Vector3(Random.Range(-1f, 1f), -ballVelocity.y, 0f);
+            ballVelocity = new Vector3(Random.Range(-1f, 1f), -ballVelocity.y + Random.Range(-0.25f, 0.25f), 0f);
         }
         else if (collision.gameObject.CompareTag("Left Wall"))
         {
-            //ballVelocity = new Vector3(Random.Range(1f, -1f), 1f, 0f);
             ballVelocity = new Vector3(-ballVelocity.x, ballVelocity.y, 0f);
         }
         else if (collision.gameObject.CompareTag("Right Wall"))
         {
-            //ballVelocity = new Vector3(Random.Range(1f, -1f), 1f, 0f);
             ballVelocity = new Vector3(-ballVelocity.x, ballVelocity.y, 0f);
         }
         else if (collision.gameObject.CompareTag("Top Wall"))
         {
-            //ballVelocity = new Vector3(Random.Range(1f, -1f), -1f, 0f);
-            ballVelocity = new Vector3(-ballVelocity.x, -ballVelocity.y, 0f);
+            ballVelocity = new Vector3(Random.Range(-1f, 1f), -ballVelocity.y, 0f);
         }
         else if (collision.gameObject.CompareTag("Bottom Wall"))
         {
             GameManager.instance.livesCount();
+
+            isGameStarted = false;
         }
         else if (collision.gameObject.CompareTag("Brick"))
         {
-            //ballVelocity = new Vector3(Random.Range(1f, -1f), -1f, 0f);
             ballVelocity = new Vector3(Random.Range(-1f, 1f), -ballVelocity.y, 0f);
         }
     }

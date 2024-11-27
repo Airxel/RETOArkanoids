@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -51,8 +52,12 @@ public class GameManager : MonoBehaviour
     {
         if (isStartClicked == true && lives > 0)
         {
-            startingTimer = startingTimer + Time.deltaTime;
-            timerNumber.text = startingTimer.ToString("00:00");
+            startingTimer += Time.deltaTime;
+
+            int minutes = Mathf.FloorToInt(startingTimer / 60f);
+            int seconds = Mathf.FloorToInt(startingTimer % 60f);
+
+            timerNumber.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
     }
 
@@ -72,6 +77,7 @@ public class GameManager : MonoBehaviour
 
     public void QuitIsClicked()
     {
+        Debug.Log("Quitting...");
         Application.Quit();
     }
 
@@ -88,18 +94,17 @@ public class GameManager : MonoBehaviour
         if (lives <= 0)
         {
             player.SetActive(false);
-            LeanTween.moveY(gameOverMenu.GetComponent<RectTransform>(), -475f, 0.5f).setEase(LeanTweenType.easeInOutSine);
+            LeanTween.moveY(gameOverMenu.GetComponent<RectTransform>(), -490f, 0.5f).setEase(LeanTweenType.easeInOutSine);
         }
         else
         {
-            Invoke(nameof(BallRespawn), 1f);
+            BallRespawn();
         }
     }
 
     public void BallRespawn()
     {
         ball.SetActive(true);
-        ball.transform.parent = player.transform;
         ball.transform.localPosition = new Vector3(0f, 10f, 0f);
     }
 }

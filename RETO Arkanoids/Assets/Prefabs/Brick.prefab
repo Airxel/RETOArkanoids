@@ -92,7 +92,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6022139353777936865}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ba0531725247187439bda7d442ec4db2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -104,7 +104,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.05, y: 1.25, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-7105644792109030320
 MonoBehaviour:
