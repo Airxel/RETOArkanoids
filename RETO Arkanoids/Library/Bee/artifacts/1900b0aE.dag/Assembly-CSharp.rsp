@@ -402,8 +402,10 @@
 "Assets/LeanTween/Testing/TestingSceneSwitching.cs"
 "Assets/LeanTween/Testing/TestingSequencer.cs"
 "Assets/Scripts/BallMovement.cs"
+"Assets/Scripts/BrickState.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/PlayerMovement.cs"
+"Assets/Scripts/ScoreCount.cs"
 -langversion:9.0
 /deterministic
 /optimize+

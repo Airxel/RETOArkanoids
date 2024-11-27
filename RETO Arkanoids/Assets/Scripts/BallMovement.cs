@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BallMovement : MonoBehaviour
@@ -15,6 +16,11 @@ public class BallMovement : MonoBehaviour
 
     [SerializeField]
     GameObject player;
+
+    private void Awake()
+    {
+        this.ballRb = GetComponent<Rigidbody>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +45,7 @@ public class BallMovement : MonoBehaviour
         }
         else
         {
-            speed = 5f;
             this.transform.position = this.transform.position + ballVelocity.normalized * speed * Time.deltaTime;
-            
-            //ballRb.AddForce(ballVelocity.normalized * speed * Time.deltaTime);
         }
     }
 
@@ -56,14 +59,12 @@ public class BallMovement : MonoBehaviour
 
         //this.transform.position = this.transform.position + ballVelocity.normalized * speed;
 
-        ballRb.AddForce(ballVelocity.normalized * speed * Time.deltaTime * 100);
+        ballRb.AddForce(ballVelocity.normalized * speed);
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Hit");
-
         if (collision.gameObject.CompareTag("Player"))
         {
             //ballVelocity = new Vector3(Random.Range(-1f, 1f), -1f, 0f);
@@ -86,13 +87,12 @@ public class BallMovement : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Bottom Wall"))
         {
-            Debug.Log("Deadge");
+            GameManager.instance.livesCount();
         }
         else if (collision.gameObject.CompareTag("Brick"))
         {
             //ballVelocity = new Vector3(Random.Range(1f, -1f), -1f, 0f);
             ballVelocity = new Vector3(Random.Range(-1f, 1f), -ballVelocity.y, 0f);
-            Debug.Log("Points");
         }
     }
 }

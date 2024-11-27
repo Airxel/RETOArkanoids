@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
 
     private float mouseXPosition;
 
+    private void Awake()
+    {
+        this.playerRb = GetComponent<Rigidbody>();
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -22,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         //transform.position = transform.position + new Vector3(Input.GetAxis("Mouse X") * Time.deltaTime * speed, 0f, 0f);
 
@@ -42,5 +46,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         playerRb.AddForce(playerInitialPosition.normalized * speed * Time.deltaTime * 100);
+    }
+
+    private void Wait()
+    {
+        
     }
 }

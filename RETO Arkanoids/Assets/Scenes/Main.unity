@@ -206,6 +206,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 277473382}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -564,7 +568,7 @@ GameObject:
   - component: {fileID: 149408611}
   - component: {fileID: 149408610}
   m_Layer: 5
-  m_Name: Lifes Background
+  m_Name: Lives Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -908,12 +912,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 676347015}
-  score: {fileID: 812055685}
-  lifes: {fileID: 1007509720}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
+  gameOverMenu: {fileID: 1027643447}
 --- !u!1 &179516161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,12 +1140,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 676347015}
-  score: {fileID: 812055685}
-  lifes: {fileID: 1007509720}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
+  gameOverMenu: {fileID: 1027643447}
 --- !u!1 &212404103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1172,7 @@ Transform:
   m_GameObject: {fileID: 212404103}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 3.45, z: 0}
+  m_LocalPosition: {x: 0.75, y: 2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1391,12 +1397,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 676347015}
-  score: {fileID: 812055685}
-  lifes: {fileID: 1007509720}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
+  gameOverMenu: {fileID: 1027643447}
 --- !u!1 &277473381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,7 +1429,7 @@ Transform:
   m_GameObject: {fileID: 277473381}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 2.55, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1441,6 +1448,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 212404104}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1719,7 +1730,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1785,6 +1796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 350664566}
   - component: {fileID: 350664567}
+  - component: {fileID: 350664568}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1819,12 +1831,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 676347015}
-  score: {fileID: 812055685}
-  lifes: {fileID: 1007509720}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
+  gameOverMenu: {fileID: 1027643447}
+--- !u!114 &350664568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350664565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e0ede8db0f7f54db20133465eeae97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  highScore: 0
+  scoreNumber: {fileID: 812055685}
+  highscoreNumber: {fileID: 1870340410}
 --- !u!1001 &376806852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1833,6 +1862,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 212404104}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2033,6 +2066,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1466071348}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2307,7 +2344,7 @@ GameObject:
   - component: {fileID: 545022487}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2438,7 +2475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballRb: {fileID: 545022487}
-  speed: 500
+  speed: 5
   player: {fileID: 1231581942}
 --- !u!1001 &583622906
 PrefabInstance:
@@ -2448,6 +2485,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1614277212}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2836,6 +2877,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 277473382}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3036,6 +3081,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 212404104}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3223,6 +3272,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 277473382}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3673,12 +3726,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 676347015}
-  score: {fileID: 812055685}
-  lifes: {fileID: 1007509720}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
+  gameOverMenu: {fileID: 1027643447}
 --- !u!1001 &870279668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3687,6 +3741,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1466071348}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3891,12 +3949,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 676347015}
-  score: {fileID: 812055685}
-  lifes: {fileID: 1007509720}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
+  gameOverMenu: {fileID: 1027643447}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3997,6 +4056,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1466071348}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4067,7 +4130,7 @@ GameObject:
   - component: {fileID: 1007509721}
   - component: {fileID: 1007509720}
   m_Layer: 5
-  m_Name: Lifes Text
+  m_Name: Lives Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4199,6 +4262,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1614277212}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4267,7 +4334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1027643448}
   m_Layer: 5
-  m_Name: Game Over
+  m_Name: Game Over Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4587,6 +4654,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 277473382}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4784,7 +4855,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.75, z: 0}
-  m_LocalScale: {x: 1.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1.5, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4812,7 +4883,7 @@ Rigidbody:
   m_GameObject: {fileID: 1231581942}
   serializedVersion: 4
   m_Mass: 0.5
-  m_Drag: 10
+  m_Drag: 5
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -4933,7 +5004,7 @@ Transform:
   m_GameObject: {fileID: 1322346509}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 3.75, z: 0}
+  m_LocalPosition: {x: 0.75, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5165,12 +5236,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 676347015}
-  score: {fileID: 812055685}
-  lifes: {fileID: 1007509720}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
+  gameOverMenu: {fileID: 1027643447}
 --- !u!1 &1436171075
 GameObject:
   m_ObjectHideFlags: 0
@@ -5219,10 +5291,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 277473382}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 96ffae10db42f1c4694fe0b49810db12, type: 2}
+    - target: {fileID: 3431629965980807160, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431629965980807160, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: m_Size.y
+      value: 1.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431629965980807160, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: m_Size.z
+      value: 1.025
+      objectReference: {fileID: 0}
     - target: {fileID: 6022139353777936865, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Name
       value: Brick
@@ -5302,7 +5390,7 @@ Transform:
   m_GameObject: {fileID: 1466071347}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 2.85, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5829,7 +5917,7 @@ Transform:
   m_GameObject: {fileID: 1614277211}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 3.15, z: 0}
+  m_LocalPosition: {x: 0.75, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6421,6 +6509,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1466071348}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6562,6 +6654,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1614277212}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6628,6 +6724,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1614277212}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6694,6 +6794,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 212404104}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6865,6 +6969,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1614277212}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -7065,6 +7173,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1466071348}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -7163,6 +7275,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 212404104}
     m_Modifications:
+    - target: {fileID: -7105644792109030320, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
+      propertyPath: state.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3340195922143793308, guid: 5233bdf93a90ffe44b881293a88354b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
