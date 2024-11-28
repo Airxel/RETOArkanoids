@@ -10,7 +10,9 @@ public class BrickState : MonoBehaviour
     private int hitPoints;
 
     public Material[] state;
+    public GameObject[] bricksCount;
 
+    public int bricksAmount;
     public float points = 100f;
 
     private void Awake()
@@ -26,7 +28,9 @@ public class BrickState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        bricksCount = GameObject.FindGameObjectsWithTag("Brick");
+
+        bricksAmount = bricksCount.Length;
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -91,7 +91,7 @@ public class BallMovement : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Bottom Wall"))
         {
-            GameManager.instance.livesCount();
+            GameManager.instance.LivesCount();
 
             isGameStarted = false;
         }

@@ -22,9 +22,13 @@ public class GameManager : MonoBehaviour
     private float startingTimer = 0f;
 
     [SerializeField]
-    GameObject startMenu, player, ball, gameOverMenu;
+    GameObject startMenu, player, ball, gameOverMenu, victoryMenu;
 
     private float lives = 3f;
+
+    public BrickState brickState;
+
+
 
     public static GameManager instance;
 
@@ -43,6 +47,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("brickState.bricksAmount");
         player.SetActive(false);
         ball.SetActive(false);
     }
@@ -50,7 +55,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isStartClicked == true && lives > 0)
+        if (isStartClicked == true && lives > 0 && brickState.bricksAmount > 0)
         {
             startingTimer += Time.deltaTime;
 
@@ -58,6 +63,10 @@ public class GameManager : MonoBehaviour
             int seconds = Mathf.FloorToInt(startingTimer % 60f);
 
             timerNumber.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
+        if (brickState.bricksAmount <= 0)
+        {
+            BricksCheck();
         }
     }
 
@@ -81,7 +90,7 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void livesCount()
+    public void LivesCount()
     {
         Debug.Log("Deadge");
 
@@ -106,5 +115,12 @@ public class GameManager : MonoBehaviour
     {
         ball.SetActive(true);
         ball.transform.localPosition = new Vector3(0f, 10f, 0f);
+    }
+
+    public void BricksCheck()
+    {
+        player.SetActive(false);
+        ball.SetActive(false);
+        LeanTween.moveY(victoryMenu.GetComponent<RectTransform>(), -490f, 0.5f).setEase(LeanTweenType.easeInOutSine);    
     }
 }

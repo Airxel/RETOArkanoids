@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6022139353777936865}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 3.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,10 +118,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52d0beb0f36b414fb2418f7cb40a1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ball: {fileID: 0}
+  player: {fileID: 0}
+  victoryMenu: {fileID: 0}
   state:
   - {fileID: 2100000, guid: 96ffae10db42f1c4694fe0b49810db12, type: 2}
   - {fileID: 2100000, guid: 9fe678301cece3f4e96c413b93418257, type: 2}
   - {fileID: 2100000, guid: d63a9257262f2e6468cf6cdc85d62043, type: 2}
   - {fileID: 2100000, guid: 1c37115fc46fe6048a533e6927042261, type: 2}
   - {fileID: 2100000, guid: 478446523a93b0f4cb02da98d4befa52, type: 2}
+  bricksCount: []
+  bricksAmount: 0
   points: 100
