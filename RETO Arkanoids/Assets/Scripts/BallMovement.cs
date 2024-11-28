@@ -22,13 +22,6 @@ public class BallMovement : MonoBehaviour
         this.ballRb = GetComponent<Rigidbody>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (isGameStarted == false)
@@ -49,9 +42,6 @@ public class BallMovement : MonoBehaviour
         else
         {
             ballRb.velocity = ballVelocity.normalized * speed;
-
-            //this.transform.position += ballVelocity.normalized * speed * Time.deltaTime;
-            //ballRb.AddForce(ballVelocity.normalized * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
         }
     }
 
@@ -63,41 +53,43 @@ public class BallMovement : MonoBehaviour
 
         ballVelocity = new Vector3(Random.Range(-1f, 1f), 1f, 0f);
 
-        ballVelocity.Normalize();
-
-        ballRb.velocity = ballRb.velocity * speed;
-
-        //ballRb.AddForce(ballVelocity.normalized * speed);
-        //this.transform.position = this.transform.position + ballVelocity.normalized * speed;
+        ballRb.velocity = ballVelocity * speed;
     }
 
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            ballVelocity = new Vector3(Random.Range(-1f, 1f), -ballVelocity.y + Random.Range(-0.25f, 0.25f), 0f);
+            //Se calcula el tamaño de la plataforma por eltamaño del collider
+            float playerWidth = collision.collider.bounds.size.x;
+
+            //Se calcula el ángulo de golpeo de la bola según donde golpee al jugador, dando un valor entre -1 y 1
+            float hitPosition = (transform.position.x - collision.transform.position.x) / playerWidth;
+
+            //Si golpea a la izquierda, rebota en esa dirección y viceversa
+            ballVelocity = new Vector3(hitPosition, Mathf.Abs(ballVelocity.y), 0f);
         }
         else if (collision.gameObject.CompareTag("Left Wall"))
         {
-            ballVelocity = new Vector3(-ballVelocity.x, ballVelocity.y, 0f);
+            ballVelocity = new Vector3(Mathf.Abs(ballVelocity.x), ballVelocity.y, 0f);
         }
         else if (collision.gameObject.CompareTag("Right Wall"))
         {
-            ballVelocity = new Vector3(-ballVelocity.x, ballVelocity.y, 0f);
+            ballVelocity = new Vector3(-Mathf.Abs(ballVelocity.x), ballVelocity.y, 0f);
         }
         else if (collision.gameObject.CompareTag("Top Wall"))
         {
-            ballVelocity = new Vector3(Random.Range(-1f, 1f), -ballVelocity.y, 0f);
+            ballVelocity = new Vector3(ballVelocity.x, -Mathf.Abs(ballVelocity.y), 0f);
+        }
+        else if (collision.gameObject.CompareTag("Brick"))
+        {
+            ballVelocity = new Vector3(ballVelocity.x, -ballVelocity.y, 0f);
         }
         else if (collision.gameObject.CompareTag("Bottom Wall"))
         {
             GameManager.instance.LivesCount();
 
             isGameStarted = false;
-        }
-        else if (collision.gameObject.CompareTag("Brick"))
-        {
-            ballVelocity = new Vector3(Random.Range(-1f, 1f), -ballVelocity.y, 0f);
         }
     }
 }

@@ -852,7 +852,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 178856654}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartIsClicked
+        m_MethodName: RestartIsClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -912,14 +912,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
   gameOverMenu: {fileID: 1027643447}
   victoryMenu: {fileID: 1193506944}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
+  brickState: {fileID: 2061550512}
 --- !u!1 &179516161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,14 +1142,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
   gameOverMenu: {fileID: 1027643447}
   victoryMenu: {fileID: 1193506944}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
+  brickState: {fileID: 2061550512}
 --- !u!1 &212404103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,14 +1330,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
   gameOverMenu: {fileID: 1027643447}
   victoryMenu: {fileID: 1193506944}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
+  brickState: {fileID: 0}
 --- !u!1 &277473381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,14 +1693,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
   gameOverMenu: {fileID: 1027643447}
   victoryMenu: {fileID: 1193506944}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
+  brickState: {fileID: 2061550512}
 --- !u!1 &385690346
 GameObject:
   m_ObjectHideFlags: 0
@@ -3302,14 +3306,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
   gameOverMenu: {fileID: 1027643447}
   victoryMenu: {fileID: 1193506944}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
+  brickState: {fileID: 0}
 --- !u!1 &915958107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3456,14 +3461,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
   gameOverMenu: {fileID: 1027643447}
   victoryMenu: {fileID: 1193506944}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
+  brickState: {fileID: 0}
 --- !u!1001 &942330350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3811,6 +3817,7 @@ GameObject:
   - component: {fileID: 1032857911}
   - component: {fileID: 1032857910}
   - component: {fileID: 1032857909}
+  - component: {fileID: 1032857912}
   m_Layer: 0
   m_Name: Top Wall
   m_TagString: Top Wall
@@ -3904,6 +3911,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032857907}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1032857912
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032857907}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1111941588
 GameObject:
   m_ObjectHideFlags: 0
@@ -3916,6 +3950,7 @@ GameObject:
   - component: {fileID: 1111941591}
   - component: {fileID: 1111941590}
   - component: {fileID: 1111941589}
+  - component: {fileID: 1111941593}
   m_Layer: 0
   m_Name: Left Wall
   m_TagString: Left Wall
@@ -4009,6 +4044,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 608954670}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1111941593
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111941588}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1129765330
 GameObject:
   m_ObjectHideFlags: 0
@@ -4311,7 +4373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRb: {fileID: 1231581948}
-  speed: 0.5
+  speed: 75
 --- !u!54 &1231581948
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4320,8 +4382,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231581942}
   serializedVersion: 4
-  m_Mass: 0.75
-  m_Drag: 5
+  m_Mass: 0.5
+  m_Drag: 4
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -4638,10 +4700,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e0ede8db0f7f54db20133465eeae97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  highScore: 0
   scoreNumber: {fileID: 812055685}
   highscoreNumber: {fileID: 1870340410}
+  score: 0
+  highScore: 0
 --- !u!1 &1406078362
 GameObject:
   m_ObjectHideFlags: 0
@@ -4788,14 +4850,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
   startMenu: {fileID: 289273337}
   player: {fileID: 1231581942}
   ball: {fileID: 545022482}
   gameOverMenu: {fileID: 1027643447}
   victoryMenu: {fileID: 1193506944}
+  timerNumber: {fileID: 676347015}
+  scoreNumber: {fileID: 812055685}
+  livesNumber: {fileID: 1007509720}
+  brickState: {fileID: 0}
 --- !u!1001 &1409771496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5751,6 +5814,7 @@ GameObject:
   - component: {fileID: 1845349916}
   - component: {fileID: 1845349915}
   - component: {fileID: 1845349914}
+  - component: {fileID: 1845349917}
   m_Layer: 0
   m_Name: Right Wall
   m_TagString: Right Wall
@@ -5844,6 +5908,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845349912}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1845349917
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845349912}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &1868471587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6596,9 +6687,9 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 2084191185}
-  - {fileID: 608954670}
   - {fileID: 805491134}
   - {fileID: 1231581946}
   - {fileID: 545022486}
+  - {fileID: 608954670}
   - {fileID: 2021305908}
   - {fileID: 1410311836}

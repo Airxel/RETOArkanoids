@@ -7,12 +7,13 @@ public class BrickState : MonoBehaviour
 {
     private Renderer brickMaterial;
 
-    private int hitPoints;
-
     public Material[] state;
     public GameObject[] bricksCount;
 
+    private int hitPoints;
+
     public int bricksAmount;
+
     public float points = 100f;
 
     private void Awake()

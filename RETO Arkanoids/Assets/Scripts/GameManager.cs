@@ -8,27 +8,19 @@ using UnityEngine.UIElements;
 public class GameManager : MonoBehaviour
 {
 
-    private bool isStartClicked = false;
+    [SerializeField]
+    GameObject startMenu, player, ball, gameOverMenu, victoryMenu;
 
     [SerializeField]
-    TextMeshProUGUI timerNumber;
-
-    [SerializeField]
-    TextMeshProUGUI scoreNumber;
-
-    [SerializeField]
-    TextMeshProUGUI livesNumber;
+    TextMeshProUGUI timerNumber, scoreNumber, livesNumber;
 
     private float startingTimer = 0f;
 
-    [SerializeField]
-    GameObject startMenu, player, ball, gameOverMenu, victoryMenu;
+    private bool isStartClicked = false;
 
     private float lives = 3f;
 
     public BrickState brickState;
-
-
 
     public static GameManager instance;
 
@@ -44,15 +36,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("brickState.bricksAmount");
         player.SetActive(false);
+
         ball.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isStartClicked == true && lives > 0 && brickState.bricksAmount > 0)
@@ -64,7 +54,7 @@ public class GameManager : MonoBehaviour
 
             timerNumber.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
-        if (brickState.bricksAmount <= 0)
+        if (isStartClicked == true && brickState.bricksAmount <= 0)
         {
             BricksCheck();
         }
@@ -74,12 +64,28 @@ public class GameManager : MonoBehaviour
     {
         isStartClicked = true;
 
+        player.SetActive(true);
+
+        ball.SetActive(true);
+
         timerNumber.text = "00:00";
         scoreNumber.text = "00000";
         livesNumber.text = "3";
 
+        LeanTween.moveY(startMenu.GetComponent<RectTransform>(), 430f, 0.5f).setEase(LeanTweenType.easeInOutSine);
+    }
+
+    public void RestartIsClicked()
+    {
+        isStartClicked = true;
+
         player.SetActive(true);
+
         ball.SetActive(true);
+
+        timerNumber.text = "00:00";
+        scoreNumber.text = "00000";
+        livesNumber.text = "3";
 
         LeanTween.moveY(startMenu.GetComponent<RectTransform>(), 430f, 0.5f).setEase(LeanTweenType.easeInOutSine);
     }
@@ -87,13 +93,14 @@ public class GameManager : MonoBehaviour
     public void QuitIsClicked()
     {
         Debug.Log("Quitting...");
+
+        PlayerPrefs.DeleteKey("High Score");
+
         Application.Quit();
     }
 
     public void LivesCount()
     {
-        Debug.Log("Deadge");
-
         lives = lives - 1;
 
         livesNumber.text = lives.ToString("0");
@@ -103,6 +110,7 @@ public class GameManager : MonoBehaviour
         if (lives <= 0)
         {
             player.SetActive(false);
+
             LeanTween.moveY(gameOverMenu.GetComponent<RectTransform>(), -490f, 0.5f).setEase(LeanTweenType.easeInOutSine);
         }
         else
@@ -114,13 +122,18 @@ public class GameManager : MonoBehaviour
     public void BallRespawn()
     {
         ball.SetActive(true);
+
         ball.transform.localPosition = new Vector3(0f, 10f, 0f);
     }
 
     public void BricksCheck()
     {
         player.SetActive(false);
+
         ball.SetActive(false);
+
+        isStartClicked = false;
+
         LeanTween.moveY(victoryMenu.GetComponent<RectTransform>(), -490f, 0.5f).setEase(LeanTweenType.easeInOutSine);    
     }
 }

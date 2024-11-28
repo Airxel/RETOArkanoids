@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3340195922143793308}
   - component: {fileID: 3431629965980807160}
   - component: {fileID: -7105644792109030320}
+  - component: {fileID: 8713336005034215799}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Brick
@@ -118,9 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52d0beb0f36b414fb2418f7cb40a1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 0}
-  player: {fileID: 0}
-  victoryMenu: {fileID: 0}
   state:
   - {fileID: 2100000, guid: 96ffae10db42f1c4694fe0b49810db12, type: 2}
   - {fileID: 2100000, guid: 9fe678301cece3f4e96c413b93418257, type: 2}
@@ -130,3 +128,30 @@ MonoBehaviour:
   bricksCount: []
   bricksAmount: 0
   points: 100
+--- !u!54 &8713336005034215799
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6022139353777936865}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
