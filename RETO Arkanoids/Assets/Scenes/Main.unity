@@ -778,7 +778,6 @@ GameObject:
   - component: {fileID: 178856653}
   - component: {fileID: 178856652}
   - component: {fileID: 178856651}
-  - component: {fileID: 178856654}
   m_Layer: 5
   m_Name: Restart Button
   m_TagString: Untagged
@@ -850,7 +849,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 178856654}
+      - m_Target: {fileID: 350664567}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: RestartIsClicked
         m_Mode: 1
@@ -900,27 +899,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178856649}
   m_CullTransparentMesh: 1
---- !u!114 &178856654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178856649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startMenu: {fileID: 289273337}
-  player: {fileID: 1231581942}
-  ball: {fileID: 545022482}
-  gameOverMenu: {fileID: 1027643447}
-  victoryMenu: {fileID: 1193506944}
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
-  brickState: {fileID: 2061550512}
 --- !u!1 &179516161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +986,6 @@ GameObject:
   - component: {fileID: 183155865}
   - component: {fileID: 183155864}
   - component: {fileID: 183155863}
-  - component: {fileID: 183155866}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -1080,7 +1057,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 183155866}
+      - m_Target: {fileID: 350664567}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: StartIsClicked
         m_Mode: 1
@@ -1130,27 +1107,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183155861}
   m_CullTransparentMesh: 1
---- !u!114 &183155866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183155861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startMenu: {fileID: 289273337}
-  player: {fileID: 1231581942}
-  ball: {fileID: 545022482}
-  gameOverMenu: {fileID: 1027643447}
-  victoryMenu: {fileID: 1193506944}
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
-  brickState: {fileID: 2061550512}
 --- !u!1 &212404103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1152,6 @@ GameObject:
   - component: {fileID: 254961475}
   - component: {fileID: 254961474}
   - component: {fileID: 254961473}
-  - component: {fileID: 254961476}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -1268,7 +1223,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 254961476}
+      - m_Target: {fileID: 350664567}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: QuitIsClicked
         m_Mode: 1
@@ -1318,27 +1273,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254961471}
   m_CullTransparentMesh: 1
---- !u!114 &254961476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254961471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startMenu: {fileID: 289273337}
-  player: {fileID: 1231581942}
-  ball: {fileID: 545022482}
-  gameOverMenu: {fileID: 1027643447}
-  victoryMenu: {fileID: 1193506944}
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
-  brickState: {fileID: 0}
 --- !u!1 &277473381
 GameObject:
   m_ObjectHideFlags: 0
@@ -3172,7 +3106,6 @@ GameObject:
   - component: {fileID: 853516600}
   - component: {fileID: 853516599}
   - component: {fileID: 853516598}
-  - component: {fileID: 853516601}
   m_Layer: 5
   m_Name: Restart Button
   m_TagString: Untagged
@@ -3244,9 +3177,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 853516601}
+      - m_Target: {fileID: 350664567}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartIsClicked
+        m_MethodName: RestartIsClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3294,27 +3227,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853516596}
   m_CullTransparentMesh: 1
---- !u!114 &853516601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853516596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startMenu: {fileID: 289273337}
-  player: {fileID: 1231581942}
-  ball: {fileID: 545022482}
-  gameOverMenu: {fileID: 1027643447}
-  victoryMenu: {fileID: 1193506944}
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
-  brickState: {fileID: 0}
 --- !u!1 &915958107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3327,7 +3239,6 @@ GameObject:
   - component: {fileID: 915958111}
   - component: {fileID: 915958110}
   - component: {fileID: 915958109}
-  - component: {fileID: 915958112}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -3399,7 +3310,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 915958112}
+      - m_Target: {fileID: 350664567}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: QuitIsClicked
         m_Mode: 1
@@ -3449,27 +3360,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915958107}
   m_CullTransparentMesh: 1
---- !u!114 &915958112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915958107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startMenu: {fileID: 289273337}
-  player: {fileID: 1231581942}
-  ball: {fileID: 545022482}
-  gameOverMenu: {fileID: 1027643447}
-  victoryMenu: {fileID: 1193506944}
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
-  brickState: {fileID: 0}
 --- !u!1001 &942330350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4716,7 +4606,6 @@ GameObject:
   - component: {fileID: 1406078366}
   - component: {fileID: 1406078365}
   - component: {fileID: 1406078364}
-  - component: {fileID: 1406078367}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -4788,7 +4677,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1406078367}
+      - m_Target: {fileID: 350664567}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: QuitIsClicked
         m_Mode: 1
@@ -4838,27 +4727,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406078362}
   m_CullTransparentMesh: 1
---- !u!114 &1406078367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406078362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678ab2863b6a2af4597608297d4ae658, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startMenu: {fileID: 289273337}
-  player: {fileID: 1231581942}
-  ball: {fileID: 545022482}
-  gameOverMenu: {fileID: 1027643447}
-  victoryMenu: {fileID: 1193506944}
-  timerNumber: {fileID: 676347015}
-  scoreNumber: {fileID: 812055685}
-  livesNumber: {fileID: 1007509720}
-  brickState: {fileID: 0}
 --- !u!1001 &1409771496
 PrefabInstance:
   m_ObjectHideFlags: 0
