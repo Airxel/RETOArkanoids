@@ -6,7 +6,7 @@ using UnityEngine;
 public class ScoreCount : MonoBehaviour
 {
     [SerializeField]
-    TextMeshProUGUI scoreNumber, highscoreNumber;
+    TextMeshProUGUI scoreNumber, highscoreNumber, scoreNumber2;
 
     public float score = 0f;
 
@@ -37,6 +37,7 @@ public class ScoreCount : MonoBehaviour
         score = score + points;
 
         scoreNumber.text = score.ToString("00000");
+        scoreNumber2.text = score.ToString("00000");
 
         if (highScore < score)
         {

@@ -10,7 +10,7 @@ public class BallMovement : MonoBehaviour
     private bool isGameStarted = false;
 
     [SerializeField]
-    private float speed = 500f;
+    private float speed = 5f;
 
     private Vector3 ballVelocity;
 
@@ -28,7 +28,7 @@ public class BallMovement : MonoBehaviour
         {
             this.transform.parent = player.transform;
 
-            this.transform.localPosition = new Vector3(0f, 1.5f, 0f);
+            this.transform.localPosition = new Vector3(0f, 0f, 0.25f);
 
             ballVelocity = Vector3.zero;
 

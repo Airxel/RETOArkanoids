@@ -14,9 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     private float playerPosition;
 
-    private float leftLimit = -2.1f;
+    private float leftLimit = -2.8f;
 
-    private float rightLimit = 2.1f;
+    private float rightLimit = 2.8f;
 
     private void Awake()
     {
@@ -37,7 +37,9 @@ public class PlayerMovement : MonoBehaviour
         //Se da la velocidad al RigidBody, para llegar a la nueva posición
         playerRb.velocity = Vector3.right * (playerPosition - transform.position.x) * speed;
 
+
         //Se añade una fuerza al RigidBody, en el modo donde no le afecta la masa del objeto
         //playerRb.AddForce(Vector3.right * mouseDelta * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        //playerRb.AddForce(Vector3.right * (playerPosition - transform.position.x) * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
     }
 }
