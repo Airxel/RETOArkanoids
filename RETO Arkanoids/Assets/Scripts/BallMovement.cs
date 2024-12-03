@@ -17,6 +17,11 @@ public class BallMovement : MonoBehaviour
     [SerializeField]
     GameObject player;
 
+    public AudioSource soundsSource;
+
+    [SerializeField]
+    public AudioClip playerSound, brickSound, wallSound, deadSound;
+
     private void Awake()
     {
         this.ballRb = GetComponent<Rigidbody>();
@@ -28,7 +33,7 @@ public class BallMovement : MonoBehaviour
         {
             this.transform.parent = player.transform;
 
-            this.transform.localPosition = new Vector3(0f, 0f, 0.25f);
+            this.transform.localPosition = new Vector3(0f, 0f, 1.75f);
 
             ballVelocity = Vector3.zero;
 
@@ -68,25 +73,43 @@ public class BallMovement : MonoBehaviour
 
             //Si golpea a la izquierda, rebota en esa dirección y viceversa
             ballVelocity = new Vector3(hitPosition, Mathf.Abs(ballVelocity.y), 0f);
+
+            soundsSource.clip = playerSound;
+            soundsSource.Play();
         }
         else if (collision.gameObject.CompareTag("Left Wall"))
         {
             ballVelocity = new Vector3(Mathf.Abs(ballVelocity.x), ballVelocity.y, 0f);
+
+            soundsSource.clip = wallSound;
+            soundsSource.Play();
         }
         else if (collision.gameObject.CompareTag("Right Wall"))
         {
             ballVelocity = new Vector3(-Mathf.Abs(ballVelocity.x), ballVelocity.y, 0f);
+
+            soundsSource.clip = wallSound;
+            soundsSource.Play();
         }
         else if (collision.gameObject.CompareTag("Top Wall"))
         {
             ballVelocity = new Vector3(ballVelocity.x, -Mathf.Abs(ballVelocity.y), 0f);
+
+            soundsSource.clip = wallSound;
+            soundsSource.Play();
         }
         else if (collision.gameObject.CompareTag("Brick"))
         {
             ballVelocity = new Vector3(ballVelocity.x, -ballVelocity.y, 0f);
+
+            soundsSource.clip = brickSound;
+            soundsSource.Play();
         }
         else if (collision.gameObject.CompareTag("Bottom Wall"))
         {
+            soundsSource.clip = deadSound;
+            soundsSource.Play();
+
             GameManager.instance.LivesCount();
 
             isGameStarted = false;

@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
     [SerializeField]
-    GameObject startMenu, player, ball, gameOverMenu, victoryMenu;
+    GameObject startMenu, player, ball, gameOverMenu, victoryMenu, soundsMenu, musicMenu;
+
+    [SerializeField]
+    public Slider soundsSlider, musicSlider;
 
     [SerializeField]
     TextMeshProUGUI timerNumber, scoreNumber, livesNumber, scoreNumber2;
@@ -20,6 +22,8 @@ public class GameManager : MonoBehaviour
     private bool isStartClicked = false;
 
     private float lives = 3f;
+
+    public AudioSource soundsSource, musicSource;
 
     public BrickState brickState;
 
@@ -46,6 +50,9 @@ public class GameManager : MonoBehaviour
         ball.SetActive(false);
 
         lives = 3f;
+
+        soundsSlider.value = soundsSource.volume;
+        musicSlider.value = musicSource.volume;
 
         timerNumber.text = "00:00";
         scoreNumber.text = "00000";
@@ -81,26 +88,15 @@ public class GameManager : MonoBehaviour
         LeanTween.moveY(startMenu.GetComponent<RectTransform>(), 650f, 0.5f).setEase(LeanTweenType.easeInOutSine);
     }
 
+    public void OptionsIsClicked()
+    {
+        LeanTween.moveX(soundsMenu.GetComponent<RectTransform>(), 255f, 0.5f).setEase(LeanTweenType.easeInOutSine);
+        LeanTween.moveX(musicMenu.GetComponent<RectTransform>(), -255f, 0.5f).setEase(LeanTweenType.easeInOutSine);
+    }
+
     public void RestartIsClicked()
     {
-        lives = 3f;
-        startingTimer = 0f;
-
-        scoreCount.score = 0f;
-
-        timerNumber.text = "00:00";
-        scoreNumber.text = "00000";
-        scoreNumber2.text = "00000";
-        livesNumber.text = "3";
-
-        LeanTween.moveY(gameOverMenu.GetComponent<RectTransform>(), 430f, 0.5f).setEase(LeanTweenType.easeInOutSine);
-        LeanTween.moveY(victoryMenu.GetComponent<RectTransform>(), 430f, 0.5f).setEase(LeanTweenType.easeInOutSine);
-
-        isStartClicked = true;
-
-        player.SetActive(true);
-
-        ball.SetActive(true);
+        SceneManager.LoadScene("Main");
     }
 
     public void QuitIsClicked()
@@ -148,5 +144,11 @@ public class GameManager : MonoBehaviour
         isStartClicked = false;
 
         LeanTween.moveY(victoryMenu.GetComponent<RectTransform>(), -575f, 0.5f).setEase(LeanTweenType.easeInOutSine);    
+    }
+
+    public void SoundVolume()
+    {
+        soundsSource.volume = soundsSlider.value;
+        musicSource.volume = musicSlider.value;
     }
 }

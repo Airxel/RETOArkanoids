@@ -9,6 +9,11 @@ public class BrickState : MonoBehaviour
 
     public Material[] state;
     public GameObject[] bricksCount;
+    public GameObject[] powerUps;
+
+    [SerializeField]
+    float powerUpBaseSpawnChance = 75f;
+    float powerUpSpawnChance;
 
     private int hitPoints;
 
@@ -46,11 +51,24 @@ public class BrickState : MonoBehaviour
     {
         hitPoints = hitPoints - 1;
 
+        powerUpSpawnChance = Random.Range(0, 100);
+
+        Debug.Log("Es:" + powerUpSpawnChance);
+
         ScoreCount.instance.AddPoints(points);
 
         if (hitPoints <= 0)
         {
             Destroy(this.gameObject);
+
+            if (powerUpSpawnChance >= powerUpBaseSpawnChance)
+            {
+                int powerUpSelection = Random.Range(0, powerUps.Length);
+                
+                GameObject newPowerUp = Instantiate(powerUps[powerUpSelection], this.transform.position, Quaternion.identity);
+
+                Debug.Log("Spawned");
+            }
         }
         else
         {

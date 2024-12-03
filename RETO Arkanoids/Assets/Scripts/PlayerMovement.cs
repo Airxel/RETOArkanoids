@@ -29,17 +29,17 @@ public class PlayerMovement : MonoBehaviour
         mouseDelta = Input.GetAxis("Mouse X");
 
         //Se calcula la posición a donde se quiere llegar
-        playerPosition = transform.position.x + mouseDelta * speed * Time.fixedDeltaTime;
+        //playerPosition = transform.position.x + mouseDelta * speed * Time.fixedDeltaTime;
 
         //Se limita la posición, para que no salga de la pantalla
-        playerPosition = Mathf.Clamp(playerPosition, leftLimit, rightLimit);
+        //playerPosition = Mathf.Clamp(playerPosition, leftLimit, rightLimit);
+        mouseDelta = Mathf.Clamp(mouseDelta, leftLimit, rightLimit);
 
         //Se da la velocidad al RigidBody, para llegar a la nueva posición
-        playerRb.velocity = Vector3.right * (playerPosition - transform.position.x) * speed;
-
+        //playerRb.velocity = Vector3.right * (playerPosition - transform.position.x) * speed;
+        //playerRb.velocity = Vector3.right * mouseDelta * speed * Time.fixedDeltaTime * 100f;
 
         //Se añade una fuerza al RigidBody, en el modo donde no le afecta la masa del objeto
-        //playerRb.AddForce(Vector3.right * mouseDelta * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
-        //playerRb.AddForce(Vector3.right * (playerPosition - transform.position.x) * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        playerRb.AddForce(Vector3.right * mouseDelta * speed * Time.fixedDeltaTime * 100f, ForceMode.VelocityChange);
     }
 }
