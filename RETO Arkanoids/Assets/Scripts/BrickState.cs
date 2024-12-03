@@ -12,8 +12,8 @@ public class BrickState : MonoBehaviour
     public GameObject[] powerUps;
 
     [SerializeField]
-    float powerUpBaseSpawnChance = 75f;
-    float powerUpSpawnChance;
+    float powerUpSpawnChance = 20f;
+    float powerUpRandomChance;
 
     private int hitPoints;
 
@@ -43,36 +43,42 @@ public class BrickState : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
-            brickHit();
+            BrickHit();
+
+            if (hitPoints <= 0)
+            {
+                PowerUpSpawner();
+            }
         }
     }
 
-    public void brickHit()
+    public void BrickHit()
     {
         hitPoints = hitPoints - 1;
 
-        powerUpSpawnChance = Random.Range(0, 100);
-
-        Debug.Log("Es:" + powerUpSpawnChance);
+        powerUpRandomChance = Random.Range(0f, 100f);
 
         ScoreCount.instance.AddPoints(points);
 
         if (hitPoints <= 0)
         {
             Destroy(this.gameObject);
-
-            if (powerUpSpawnChance >= powerUpBaseSpawnChance)
-            {
-                int powerUpSelection = Random.Range(0, powerUps.Length);
-                
-                GameObject newPowerUp = Instantiate(powerUps[powerUpSelection], this.transform.position, Quaternion.identity);
-
-                Debug.Log("Spawned");
-            }
         }
         else
         {
             this.brickMaterial.material = this.state[hitPoints - 1];
+        }
+    }
+
+    public void PowerUpSpawner()
+    {
+        if (powerUpSpawnChance >= powerUpRandomChance)
+        {
+            int powerUpSelection = Random.Range(0, powerUps.Length);
+
+            GameObject newPowerUp = powerUps[powerUpSelection];
+
+            Instantiate(newPowerUp, this.transform.position, newPowerUp.transform.rotation);
         }
     }
 }

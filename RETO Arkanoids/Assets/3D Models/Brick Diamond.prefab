@@ -89,6 +89,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a70683f23c6d9d543978bab575a63d65, type: 3}
       insertIndex: -1
       addedObject: {fileID: -6358555136241046881}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a70683f23c6d9d543978bab575a63d65, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4710539737471623993}
   m_SourcePrefab: {fileID: 100100000, guid: a70683f23c6d9d543978bab575a63d65, type: 3}
 --- !u!1 &416059526838099298 stripped
 GameObject:
@@ -114,6 +117,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 42873602549ae0447a1ce5748fd1b42c, type: 2}
   - {fileID: 2100000, guid: 03cc4cb3ec49af14892b344fd8ae54a2, type: 2}
   bricksCount: []
+  powerUps:
+  - {fileID: 5548879293839653012, guid: 23657c2470227f04891606ee7468597b, type: 3}
+  - {fileID: 4914363970053483735, guid: ca21c7f119284574cb61a7eb0a901f9b, type: 3}
+  - {fileID: 463220655860871489, guid: 1f03a82f6a38ac34194b995349a9c97e, type: 3}
+  - {fileID: 1455583982721980265, guid: 336ac35aa1f527c40a340b96418220bd, type: 3}
+  powerUpSpawnChance: 20
   bricksAmount: 0
   points: 100
 --- !u!65 &-7140528945478601507
@@ -164,3 +173,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-4710539737471623993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416059526838099298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9f09d5bc8d0c942af0198ab17260da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

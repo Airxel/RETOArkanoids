@@ -406,6 +406,7 @@
 "Assets/Scripts/BrickState.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/PlayerMovement.cs"
+"Assets/Scripts/PowerUpSpawn.cs"
 "Assets/Scripts/ScoreCount.cs"
 -langversion:9.0
 /deterministic
