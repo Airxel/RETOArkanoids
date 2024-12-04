@@ -22,12 +22,16 @@ public class BallMovement : MonoBehaviour
     [SerializeField]
     public AudioClip playerSound, brickSound, wallSound, deadSound;
 
+    public PowerUpSpawn powerUpSpawn;
+
     private void Awake()
     {
         this.ballRb = GetComponent<Rigidbody>();
+
+        powerUpSpawn = GetComponent<PowerUpSpawn>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (isGameStarted == false)
         {
@@ -44,6 +48,10 @@ public class BallMovement : MonoBehaviour
                 isGameStarted = true;
             }
         }
+        if (powerUpSpawn.slowPower == true)
+        {
+            powerUpSpawn.SlowActive();
+        }
         else
         {
             ballRb.velocity = ballVelocity.normalized * speed;
@@ -54,14 +62,14 @@ public class BallMovement : MonoBehaviour
     {
         this.transform.parent = null;
 
-        ballRb.isKinematic = false;
+        //ballRb.isKinematic = false;
 
         ballVelocity = new Vector3(Random.Range(-1f, 1f), 1f, 0f);
 
         ballRb.velocity = ballVelocity * speed;
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -110,7 +118,7 @@ public class BallMovement : MonoBehaviour
             soundsSource.clip = deadSound;
             soundsSource.Play();
 
-            GameManager.instance.LivesCount();
+            GameManager.instance.LifesCount();
 
             isGameStarted = false;
         }

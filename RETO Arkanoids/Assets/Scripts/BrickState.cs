@@ -19,6 +19,7 @@ public class BrickState : MonoBehaviour
 
     public int bricksAmount;
 
+    [SerializeField]
     public float points = 100f;
 
     private void Awake()
@@ -26,13 +27,13 @@ public class BrickState : MonoBehaviour
         this.brickMaterial = GetComponent<Renderer>();
     }
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         hitPoints = state.Length;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         bricksCount = GameObject.FindGameObjectsWithTag("Brick");
 

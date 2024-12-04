@@ -10,6 +10,10 @@ TagManager:
   - Bottom Wall
   - Brick
   - Ball
+  - Power Destruction
+  - Power Points
+  - Power Slow
+  - Power Lifes
   layers:
   - Default
   - TransparentFX

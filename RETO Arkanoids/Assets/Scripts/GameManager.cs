@@ -15,13 +15,13 @@ public class GameManager : MonoBehaviour
     public Slider soundsSlider, musicSlider;
 
     [SerializeField]
-    TextMeshProUGUI timerNumber, scoreNumber, livesNumber, scoreNumber2;
+    TextMeshProUGUI timerNumber, scoreNumber, lifesNumber, scoreNumber2;
 
     private float startingTimer = 0f;
 
     private bool isStartClicked = false;
 
-    private float lives = 3f;
+    private float lifes = 3f;
 
     public AudioSource soundsSource, musicSource;
 
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         ball.SetActive(false);
 
-        lives = 3f;
+        lifes = 3f;
 
         soundsSlider.value = soundsSource.volume;
         musicSlider.value = musicSource.volume;
@@ -57,12 +57,12 @@ public class GameManager : MonoBehaviour
         timerNumber.text = "00:00";
         scoreNumber.text = "00000";
         scoreNumber2.text = "00000";
-        livesNumber.text = "3";
+        lifesNumber.text = "3";
     }
 
     void Update()
     {
-        if (isStartClicked == true && lives > 0 && brickState.bricksAmount > 0)
+        if (isStartClicked == true && lifes > 0 && brickState.bricksAmount > 0)
         {
             startingTimer += Time.deltaTime;
 
@@ -108,15 +108,15 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void LivesCount()
+    public void LifesCount()
     {
-        lives = lives - 1f;
+        lifes = lifes - 1f;
 
-        livesNumber.text = lives.ToString("0");
+        lifesNumber.text = lifes.ToString("0");
 
         ball.SetActive(false);
 
-        if (lives <= 0)
+        if (lifes <= 0)
         {
             player.SetActive(false);
 
@@ -126,6 +126,14 @@ public class GameManager : MonoBehaviour
         {
             BallRespawn();
         }
+    }
+
+    public void AddLifes()
+    {
+        lifes = lifes + 1f;
+
+        lifesNumber.text = lifes.ToString("0");
+
     }
 
     public void BallRespawn()
