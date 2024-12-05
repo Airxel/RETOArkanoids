@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
+    //Referencia al RigidBody de la bola
     public Rigidbody ballRb;
 
     private bool isGameStarted = false;
@@ -17,22 +18,25 @@ public class BallMovement : MonoBehaviour
     [SerializeField]
     GameObject player;
 
+    //Referencia al audio
     public AudioSource soundsSource;
 
     [SerializeField]
     public AudioClip playerSound, brickSound, wallSound, deadSound;
 
-    public PowerUpSpawn powerUpSpawn;
+    //Valores para el power-up de slow
+    private bool slowPower = false;
+    float slowTimer = 0f;
 
     private void Awake()
     {
+        //Se busca la referencia del RigidBody de la bola
         this.ballRb = GetComponent<Rigidbody>();
-
-        powerUpSpawn = GetComponent<PowerUpSpawn>();
     }
 
     private void FixedUpdate()
     {
+        //Se emparenta la bola al jugador mientras no empiece la partida
         if (isGameStarted == false)
         {
             this.transform.parent = player.transform;
@@ -41,6 +45,7 @@ public class BallMovement : MonoBehaviour
 
             ballVelocity = Vector3.zero;
 
+            //Al pulsar el espacio
             if (Input.GetButton("Jump"))
             {
                 SpacePressed();
@@ -48,21 +53,34 @@ public class BallMovement : MonoBehaviour
                 isGameStarted = true;
             }
         }
-        if (powerUpSpawn.slowPower == true)
+        else if (slowPower == true)
         {
-            powerUpSpawn.SlowActive();
+            //Comienzan los 10 segundos
+            slowTimer = slowTimer + Time.deltaTime;
+
+            if (slowTimer <= 10f)
+            {
+                //Se ralentiza la bola
+                ballRb.velocity = ballVelocity.normalized * speed / 2f;
+            }
+            else
+            {
+                //Vuelve a su velocidad
+                slowPower = false;
+                slowTimer = 0f;
+            }
         }
         else
         {
+            //Velocidad contínua para que se mueva al cambiar la dirección de los vectores
             ballRb.velocity = ballVelocity.normalized * speed;
         }
     }
 
     private void SpacePressed()
     {
+        //Al pulsar espacio, se quita el emparentado, se la da un vector y una velocidad a la bola
         this.transform.parent = null;
-
-        //ballRb.isKinematic = false;
 
         ballVelocity = new Vector3(Random.Range(-1f, 1f), 1f, 0f);
 
@@ -71,9 +89,11 @@ public class BallMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //Al colisionar la bola con distintos elementos, va cambiando su vector velocidad.
+        //Se usa el absoluto en algunos casos para asegurar que la dirección sea la contraria
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Se calcula el tamaño de la plataforma por eltamaño del collider
+            //Se calcula el tamaño de la plataforma por el tamaño del collider
             float playerWidth = collision.collider.bounds.size.x;
 
             //Se calcula el ángulo de golpeo de la bola según donde golpee al jugador, dando un valor entre -1 y 1
@@ -82,6 +102,7 @@ public class BallMovement : MonoBehaviour
             //Si golpea a la izquierda, rebota en esa dirección y viceversa
             ballVelocity = new Vector3(hitPosition, Mathf.Abs(ballVelocity.y), 0f);
 
+            //Se escoge el sonido y se hace que suene
             soundsSource.clip = playerSound;
             soundsSource.Play();
         }
@@ -118,9 +139,17 @@ public class BallMovement : MonoBehaviour
             soundsSource.clip = deadSound;
             soundsSource.Play();
 
+            //Se llama a la función que cuenta las vidas en el GameManager
             GameManager.instance.LifesCount();
 
             isGameStarted = false;
         }
+    }
+
+    public void SlowActive()
+    {
+        //Se activa el power-up de slow
+        slowPower = true;
+        slowTimer = 0f;
     }
 }

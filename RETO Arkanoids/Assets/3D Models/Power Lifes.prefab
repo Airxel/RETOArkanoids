@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: 500
   ball: {fileID: 3303119561036165708, guid: 309fdea6a8f5753418216aa4bbd8a8e3, type: 3}
+  ballRb: {fileID: 0}
 --- !u!65 &-2743727459786119399
 BoxCollider:
   m_ObjectHideFlags: 0

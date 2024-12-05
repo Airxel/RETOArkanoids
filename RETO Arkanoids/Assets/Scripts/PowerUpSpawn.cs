@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PowerUpSpawn : MonoBehaviour
@@ -7,49 +8,19 @@ public class PowerUpSpawn : MonoBehaviour
     [SerializeField]
     public float points = 500f;
 
-    [SerializeField]
-    public GameObject ball;
+    //Referencia al script BallMovement
+    private BallMovement ballMovement;
 
-    public bool slowPower = false;
-
-    private float slowTimer = 0f;
-
-    public Rigidbody ballRb;
+    //Referencia al script BrickState
+    private BrickState brickState;
 
     private void Awake()
     {
-        ballRb = ball.GetComponent<Rigidbody>();
-    }
+        //Buscamos el script en el objeto con la etiqueta "Ball"
+        ballMovement = GameObject.FindGameObjectWithTag("Ball").GetComponent<BallMovement>();
 
-    private void Start()
-    {
-        slowPower = false;
-    }
-
-    private void FixedUpdate()
-    {
-        if (slowPower == true)
-        {
-            Debug.Log("slowPower es true");
-
-            slowTimer = slowTimer + Time.deltaTime;
-
-            Debug.Log("Timer:" + slowTimer);
-
-            if (slowTimer <= 10f)
-            {
-                ballRb.velocity = ballRb.velocity / 2f;
-
-                Debug.Log("Velocidad reducida");
-            }
-            else
-            {
-                slowPower = false;
-                slowTimer = 0f;
-
-                Debug.Log("Velocidad normal");
-            }
-        }
+        //Buscamos el script en el objeto con la etiqueta "Brick"
+        brickState = GameObject.FindGameObjectWithTag("Brick").GetComponent<BrickState>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -58,54 +29,31 @@ public class PowerUpSpawn : MonoBehaviour
         {
             if (this.gameObject.CompareTag("Power Destruction"))
             {
-                Debug.Log("DESTRUCTION");
+                //Llamamos a una función de BrickState
+                brickState.DestructionActive();
             }
             else if (this.gameObject.CompareTag("Power Slow"))
             {
-                slowPower = true;
-                Debug.Log("SLOW");
+                //Llamamos a una función de BallMovement
+                ballMovement.SlowActive();
             }
             else if (this.gameObject.CompareTag("Power Lifes"))
             {
+                //Llamamos a una función de GameManager (Singleton)
                 GameManager.instance.AddLifes();
-                Debug.Log("LIFES");
             }
             else if (this.gameObject.CompareTag("Power Points"))
             {
+                //Llamamos a una función de ScoreCount (Singleton)
                 ScoreCount.instance.AddPoints(points);
-                Debug.Log("POINTS");
             }
 
             Destroy(this.gameObject);
-            Debug.Log("ACTIVADO");
+
         }
         else if (collision.gameObject.CompareTag("Bottom Wall"))
         {
             Destroy(this.gameObject);
-            Debug.Log("PERDIDO");
-        }
-    }
-
-    public void SlowActive()
-    {
-        Debug.Log("slowPower es true");
-
-        slowTimer = slowTimer + Time.deltaTime;
-
-        Debug.Log("Timer:" + slowTimer);
-
-        if (slowTimer <= 10f)
-        {
-            ballRb.velocity = ballRb.velocity / 2f;
-
-            Debug.Log("Velocidad reducida");
-        }
-        else
-        {
-            slowPower = false;
-            slowTimer = 0f;
-
-            Debug.Log("Velocidad normal");
         }
     }
 }

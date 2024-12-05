@@ -119,7 +119,7 @@ MonoBehaviour:
   - {fileID: 4914363970053483735, guid: ca21c7f119284574cb61a7eb0a901f9b, type: 3}
   - {fileID: 463220655860871489, guid: 1f03a82f6a38ac34194b995349a9c97e, type: 3}
   - {fileID: 1455583982721980265, guid: 336ac35aa1f527c40a340b96418220bd, type: 3}
-  powerUpSpawnChance: 50
+  powerUpSpawnChance: 30
   bricksAmount: 0
   points: 100
 --- !u!65 &-7140528945478601507
