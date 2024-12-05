@@ -112,14 +112,15 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a6f0b39c1bd28644589e2fd92ef40ba3, type: 2}
   - {fileID: 2100000, guid: c8a3ca5665489014cafcd87ff54e217e, type: 2}
   bricksCount: []
+  bricksAmount: 0
   powerUps:
   - {fileID: 5548879293839653012, guid: 23657c2470227f04891606ee7468597b, type: 3}
   - {fileID: 4914363970053483735, guid: ca21c7f119284574cb61a7eb0a901f9b, type: 3}
   - {fileID: 463220655860871489, guid: 1f03a82f6a38ac34194b995349a9c97e, type: 3}
   - {fileID: 1455583982721980265, guid: 336ac35aa1f527c40a340b96418220bd, type: 3}
+  - {fileID: 1009267076116131088, guid: d2bf1b6f4dda88e4b9db63545584757d, type: 3}
   powerUpSpawnChance: 20
-  bricksAmount: 0
-  points: 100
+  points: 300
 --- !u!65 &-6003935041098256000
 BoxCollider:
   m_ObjectHideFlags: 0

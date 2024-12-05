@@ -14,6 +14,8 @@ public class PowerUpSpawn : MonoBehaviour
     //Referencia al script BrickState
     private BrickState brickState;
 
+    private PlayerMovement playerMovement;
+
     private void Awake()
     {
         //Buscamos el script en el objeto con la etiqueta "Ball"
@@ -21,6 +23,9 @@ public class PowerUpSpawn : MonoBehaviour
 
         //Buscamos el script en el objeto con la etiqueta "Brick"
         brickState = GameObject.FindGameObjectWithTag("Brick").GetComponent<BrickState>();
+
+        //Buscamos el script en el objeto con la etiqueta "Player"
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent <PlayerMovement>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -46,6 +51,11 @@ public class PowerUpSpawn : MonoBehaviour
             {
                 //Llamamos a una función de ScoreCount (Singleton)
                 ScoreCount.instance.AddPoints(points);
+            }
+            else if (this.gameObject.CompareTag("Invert Movement"))
+            {
+                //Llamamos a una función de PlayerMovement
+                playerMovement.InvertPlayerMovement();
             }
 
             Destroy(this.gameObject);

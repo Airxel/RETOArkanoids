@@ -57,12 +57,11 @@ public class BrickState : MonoBehaviour
         {
             destructionTimer = destructionTimer + Time.deltaTime;
 
-            if (destructionTimer > 10f)
+            if (destructionTimer >= 10f)
             {
                 destructionPower = false;
                 destructionTimer = 0f;
             }
-            
         }
     }
 
@@ -82,7 +81,7 @@ public class BrickState : MonoBehaviour
     public void BrickHit()
     {
         //Al golpear un brick se añaden puntos desde la función llamada de ScoreCount
-        ScoreCount.instance.AddPoints(points);
+        //ScoreCount.instance.AddPoints(points);
 
         //El brick pierde vida
         hitPoints = hitPoints - 1;
@@ -92,6 +91,8 @@ public class BrickState : MonoBehaviour
 
         if (hitPoints <= 0)
         {
+            //Al destruir un brick se añaden puntos (según el tipo que sean) desde la función llamada de ScoreCount
+            ScoreCount.instance.AddPoints(points);
             Destroy(this.gameObject);
         }
         else
@@ -101,15 +102,7 @@ public class BrickState : MonoBehaviour
         }
     }
 
-    public void DestructionActive()
-    {
-        //Pruebas para el power-up de destrucción
-        destructionPower = true;
-        destructionTimer = 0f;
-
-    }
-
-    public void PowerUpSpawner()
+    private void PowerUpSpawner()
     {
         //Cuando la probabilidad base es mayor que el número aleatorio generado
         if (powerUpSpawnChance >= powerUpRandomChance)
@@ -123,5 +116,12 @@ public class BrickState : MonoBehaviour
             //Y se instancia en la escena en la posición del brick destruído
             Instantiate(newPowerUp, this.transform.position, newPowerUp.transform.rotation);
         }
+    }
+
+    public void DestructionActive()
+    {
+        //Pruebas para el power-up de destrucción
+        destructionPower = true;
+        destructionTimer = 0f;
     }
 }

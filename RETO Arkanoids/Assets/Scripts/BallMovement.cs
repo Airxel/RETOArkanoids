@@ -26,7 +26,7 @@ public class BallMovement : MonoBehaviour
 
     //Valores para el power-up de slow
     private bool slowPower = false;
-    float slowTimer = 0f;
+    private float slowTimer = 0f;
 
     private void Awake()
     {
@@ -65,7 +65,7 @@ public class BallMovement : MonoBehaviour
             }
             else
             {
-                //Vuelve a su velocidad
+                //Cuando se acaba el tiempo, vuelve a su velocidad
                 slowPower = false;
                 slowTimer = 0f;
             }

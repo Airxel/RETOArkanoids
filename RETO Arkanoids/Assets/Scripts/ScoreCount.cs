@@ -27,7 +27,7 @@ public class ScoreCount : MonoBehaviour
         }
     }
 
-     void Start()
+     private void Start()
     {
         //Se llama al valor guardado en el PlayerPrefs para la mayor puntuación
         highScore = PlayerPrefs.GetFloat("High Score", 0);
